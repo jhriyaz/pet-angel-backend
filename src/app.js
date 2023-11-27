@@ -2,6 +2,10 @@ const express = require('express');
 const connectDb = require('./db/ConnecttoDB');
 const port = process.env.PORT ||6999
 const categories =require('./routes/Category');
+const jwtToken =require('./routes/auth');
+const users =require('./routes/auth/users');
+const AdminCheck =require('./routes/auth/adminCheck');
+const pets =require('./routes/pets');
 const applyMiddleware = require('./middleware/applyMiddleware');
 const app = express();
 
@@ -11,8 +15,18 @@ applyMiddleware(app)
 
 // Category Routes
 app.use(categories)
+// Jwt Token
+app.use(jwtToken)
 
+// user related routes
+app.use(users)
 
+// Admin related routes
+
+app.use(AdminCheck)
+
+//pet related routes
+app.use(pets)
 
 // Check server Health
 app.get('/health', (req, res) => {

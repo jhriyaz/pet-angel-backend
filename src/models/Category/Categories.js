@@ -11,7 +11,7 @@ let PetCategorySchema = new Schema({
         },
         image:{
             type: String,
-        required: true
+            default: 'user'
         }
     
     

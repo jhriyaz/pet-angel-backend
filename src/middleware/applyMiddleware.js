@@ -7,7 +7,7 @@ const applyMiddleware = (app)=>{
 
     app.use(cors({
         origin:[
-            'http://localhost:5173',
+          Local_client, Client
       ],
         credentials:true
       }));
