@@ -4,7 +4,7 @@ const checkAdmin=async(req,res)=>{
    let email= req.email
    let query={email:email}
    let user =await UsersCollection.findOne(query)
-if(user.role==='admin'){
+if(user?.role==='admin'){
   return  res.send(true)
 }
 res.send(false)

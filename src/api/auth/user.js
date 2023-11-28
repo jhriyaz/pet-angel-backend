@@ -7,7 +7,6 @@ res.send(result)
 }
 const usersGet=async (req,res)=>{
     let admin=req.admin
-    console.log(admin)
 let result=await UsersCollection.find()
 res.send(result)
 }
@@ -15,7 +14,6 @@ res.send(result)
 
 
 const MakeAdmin=async (req, res)=>{
-   console.log(req.params.id)
 
 var id = req.params.id;
     let query={_id:id}

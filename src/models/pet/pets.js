@@ -26,9 +26,12 @@ const pet=new Schema({
     },adopted:{
         type: Boolean,
         default: false
-    },Added:{
+    },AddedBy:{
         type: String,
         required: true
+    },AddedDate:{
+        type: Date,
+        default: new Date()
     }
 })
 const petSchema =model('pets',pet)
