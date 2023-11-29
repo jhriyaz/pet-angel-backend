@@ -6,6 +6,7 @@ const jwtToken =require('./routes/auth');
 const users =require('./routes/auth/users');
 const AdminCheck =require('./routes/auth/adminCheck');
 const pets =require('./routes/pets');
+const adoption =require('./routes/adoption');
 const applyMiddleware = require('./middleware/applyMiddleware');
 const app = express();
 
@@ -27,6 +28,9 @@ app.use(AdminCheck)
 
 //pet related routes
 app.use(pets)
+
+//adoption related routes
+app.use(adoption)
 
 // Check server Health
 app.get('/health', (req, res) => {
