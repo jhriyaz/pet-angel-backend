@@ -7,6 +7,8 @@ const users =require('./routes/auth/users');
 const AdminCheck =require('./routes/auth/adminCheck');
 const pets =require('./routes/pets');
 const adoption =require('./routes/adoption');
+const donations =require('./routes/donation');
+const payments =require('./routes/payment');
 const applyMiddleware = require('./middleware/applyMiddleware');
 const app = express();
 
@@ -31,6 +33,10 @@ app.use(pets)
 
 //adoption related routes
 app.use(adoption)
+//donations related routes
+app.use(donations)
+//Payment related route
+app.use(payments)
 
 // Check server Health
 app.get('/health', (req, res) => {
