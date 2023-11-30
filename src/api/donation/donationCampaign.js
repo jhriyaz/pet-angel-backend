@@ -1,12 +1,18 @@
 const donationCampaignSchema = require("../../models/donation/donation")
 
 let postDonationCampaign=async (req, res) => {
+    if(!req.email){
+        res.send('unauthorized').status(401)
+    }
     let data=req.body
     let result=await donationCampaignSchema.create(data)
     console.log(result)
     res.send(result)
 }
 let getDonationCampaigns=async (req, res) => {
+    if(!req.email){
+      return  res.send('unauthorized').status(401)
+    }
     let email=req.email
     let query={postedBy:email}
     let result=await donationCampaignSchema.find(query)
@@ -15,7 +21,9 @@ let getDonationCampaigns=async (req, res) => {
 // get all data 
 
 let getAllDonationCampaigns=async (req, res) => {
-let load=req.query
+    if(!req.email){
+     return   res.send('unauthorized').status(401)
+    }
     let result=await donationCampaignSchema.find().sort({publishDate: -1})
     res.send({data:result,time:new Date()})
 
@@ -25,7 +33,9 @@ let load=req.query
 
 let getDonationCampaign=async (req, res) => {
 
-   
+    if(!req.email){
+       return res.send('unauthorized').status(401)
+    }
     let id=req.params.id
     let query={_id:id}
     let result=await donationCampaignSchema.findOne(query)
@@ -33,6 +43,9 @@ let getDonationCampaign=async (req, res) => {
     console.log(result)
 }
 let updateDonationCampaign=async (req, res) => {
+    if(!req.email){
+      return  res.send('unauthorized').status(401)
+    }
     let id=req.params.id
     let email=req.email
    let data= req.body

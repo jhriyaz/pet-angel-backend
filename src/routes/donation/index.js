@@ -1,6 +1,7 @@
 let express=require('express')
 const { postDonationCampaign, getDonationCampaigns,getDonationCampaign,updateDonationCampaign,updateDonationCampaignStatus,getAllDonationCampaigns } = require('../../api/donation/donationCampaign')
 const verifyToken = require('../../middleware/auth/VerifyToken')
+const { topDonations, donationsById } = require('../../api/donation/donation')
 let router=express.Router()
 
 
@@ -12,5 +13,11 @@ router.patch('/api/donation_campaign/update/:id',verifyToken,updateDonationCampa
 router.patch('/api/donation_campaign/updates/status/:id',verifyToken,updateDonationCampaignStatus)
 
 
+
+// after donation 
+
+
+router.get('/api/top_donation',topDonations)
+router.get('/api/campaign/donations/:id',donationsById)
 
 module.exports=router
